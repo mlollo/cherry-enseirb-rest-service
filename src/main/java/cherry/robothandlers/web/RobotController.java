@@ -61,4 +61,28 @@ public class RobotController {
 				}
 			}
 	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/take", method = RequestMethod.POST)
+	public void robotTaken(@RequestParam(value="id", required = false, defaultValue = "null") String name)
+	{	
+		Robot robot = SetupController.getRobot(name);
+		
+		if(!robot.getName().equals("null")){
+			logger.info("Robot "+ robot.getName() +" taken.");
+			robot.setTaken(true);
+		}
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/release", method = RequestMethod.POST)
+	public void robotRelease(@RequestParam(value="id", required = false, defaultValue = "null") String name)
+	{	
+		Robot robot = SetupController.getRobot(name);
+		
+		if(!robot.getName().equals("null")){
+			logger.info("Robot "+ robot.getName() +" is released.");
+			robot.setTaken(false);
+		}
+	}
 }

@@ -10,6 +10,7 @@ public class Robot {
 	private String ip;
 	private boolean isSpeaking;
 	private boolean isMoving;
+	private boolean isTaken;
 	private List<String> primList;
 	private List<String> speechList;
 
@@ -20,10 +21,19 @@ public class Robot {
 		ip ="0";
 		isSpeaking = false;
 		isMoving = false;
+		isTaken = false;
 		setPrimList(new ArrayList<String>());
 		setSpeechList(new ArrayList<String>());
 	}
 	
+	public boolean isTaken() {
+		return isTaken;
+	}
+
+	public void setTaken(boolean isTaken) {
+		this.isTaken = isTaken;
+	}
+
 	public List<String> getSpeechList() {
 		return speechList;
 	}
@@ -44,7 +54,7 @@ public class Robot {
 		return ip;
 	}
 	public void setIp(String ip) {
-		this.ip = "http://" + ip + ":8000";
+		this.ip = "http://" + ip;
 		//test
 		//his.ip = ip;
 	}
